@@ -2,6 +2,8 @@ package com.wang.langchain4j.study.config;
 
 import com.wang.langchain4j.study.manager.AiCodeHelperService;
 import dev.langchain4j.community.model.dashscope.QwenChatModel;
+import dev.langchain4j.memory.ChatMemory;
+import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.service.AiServices;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,6 +21,9 @@ public class CommonConfiguration {
     @Value("${langchain4j.community.dashscope.chat-model.api-key}")
     private String apiKey;
 
+    @Value("${langchain4j.memory.message.maxCount}")
+    private int memoryMessageMaxCount;
+
     @Bean
     public ChatModel myQwenChatModel() {
         return QwenChatModel.builder()
@@ -29,6 +34,11 @@ public class CommonConfiguration {
                 .maxTokens(4096)
                 .stops(List.of("Hello"))
                 .build();
+    }
+
+    @Bean
+    public ChatMemory chatMemory() {
+        return MessageWindowChatMemory.withMaxMessages(memoryMessageMaxCount);
     }
 
 //    @Bean

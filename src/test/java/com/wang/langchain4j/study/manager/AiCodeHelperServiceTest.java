@@ -14,4 +14,10 @@ public class AiCodeHelperServiceTest extends BaseTest {
         System.out.println(aiCodeHelperService.chat("我是宁雅姝"));
     }
 
+    @Test
+    public void testChatWithMemory() {
+        System.out.println(aiCodeHelperService.littleChat("我是王春生，我喜欢宁雅姝"));
+        System.out.println(aiCodeHelperService.littleChat("你好，我是谁？我喜欢谁？"));
+    }
+
 }
