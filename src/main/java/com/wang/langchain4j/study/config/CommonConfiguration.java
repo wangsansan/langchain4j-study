@@ -1,7 +1,9 @@
 package com.wang.langchain4j.study.config;
 
+import com.wang.langchain4j.study.manager.AiCodeHelperService;
 import dev.langchain4j.community.model.dashscope.QwenChatModel;
 import dev.langchain4j.model.chat.ChatModel;
+import dev.langchain4j.service.AiServices;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,5 +30,10 @@ public class CommonConfiguration {
                 .stops(List.of("Hello"))
                 .build();
     }
+
+//    @Bean
+//    public AiCodeHelperService aiCodeHelperService(ChatModel myQwenChatModel) {
+//        return AiServices.create(AiCodeHelperService.class, myQwenChatModel);
+//    }
 
 }
