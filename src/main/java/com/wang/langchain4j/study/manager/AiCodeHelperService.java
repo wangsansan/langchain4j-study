@@ -7,7 +7,7 @@ import dev.langchain4j.service.spring.AiServiceWiringMode;
 @AiService(chatMemory = "chatMemory", wiringMode = AiServiceWiringMode.EXPLICIT, chatModel = "myQwenChatModel")
 public interface AiCodeHelperService {
 
-    @SystemMessage(fromResource = "system-prompt.txt")
+    @SystemMessage(fromResource = "prompt/system-prompt.txt")
     String chat(String userMessage);
 
     String littleChat(String userMessage);
